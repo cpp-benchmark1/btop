@@ -31,7 +31,7 @@ jobs:
       shell: bash
       run: |
         sudo apt install coreutils sed git build-essential cmake gcc g++ ninja-build lowdown
-        CXX=clang++ LDFLAGS=-fuse-ld=lld cmake -B build -G Ninja -DBTOP_GPU=false
+        CXX=clang++ CC=clang LDFLAGS=-fuse-ld=lld cmake -B build -G Ninja -DBTOP_GPU=false
         cmake --build build --verbose
     - name: Free disk space
       run: |
