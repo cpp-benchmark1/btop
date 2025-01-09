@@ -30,7 +30,7 @@ jobs:
     - if: matrix.build-mode == 'manual'
       shell: bash
       run: |
-        sudo apt install cmake git g++ ninja-build lowdown
+        sudo apt install coreutils sed git build-essential cmake gcc g++ ninja-build lowdown
         CXX=clang++ LDFLAGS=-fuse-ld=lld cmake -B build -G Ninja -DBTOP_STATIC=ON -DBTOP_GPU=false
         cmake --build build --verbose
     - name: Free disk space
