@@ -30,7 +30,9 @@ jobs:
     - if: matrix.build-mode == 'manual'
       shell: bash
       run: |
-        make
+        sudo apt install coreutils sed git build-essential gcc-11 g++-11 lowdown
+        CXX=clang++ LDFLAGS=-fuse-ld=lld cmake -B build -G Ninja -DBTOP_STATIC=ON
+        cmake --build build --verbose
     - name: Free disk space
       run: |
           sudo docker rmi $(docker image ls -aq) >/dev/null 2>&1 || true
